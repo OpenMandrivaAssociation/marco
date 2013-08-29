@@ -10,7 +10,7 @@
 Summary:       Mate window manager
 Name:          %{name}
 Version:       1.6.2
-Release:       1
+Release:       2
 URL:           http://www.mate-desktop.org/
 Source0:       http://pub.mate-desktop.org/releases/%{url_ver}/%{oname}-%{version}.tar.xz
 # use oxygen as our default theme
@@ -43,8 +43,8 @@ BuildRequires: pkgconfig(dbus-glib-1)
 BuildRequires: libmesaglu-devel
 
 Requires:      mate-dialogs
-Provides:      %{oname} = %{version}-%{release}
 
+%rename		%{oname}
 
 %description
 The Mate window manager integrates nicely with MATE.
@@ -69,7 +69,6 @@ files to allow you to develop with Mate window manager.
 
 %prep
 %setup -q -n %{oname}-%{version} -b1
-%apply_patches
 
 pushd "../Oxygen Accurate Installation Files"
 tar xf OxygenAccurate.tar.gz
@@ -86,8 +85,6 @@ popd
 %makeinstall_std
 
 %find_lang %{name}
-
-rm -fr %buildroot%{_libdir}/*.la
 
 pushd "../Oxygen Accurate Installation Files/Oxygen Accurate"
 mkdir -p %{buildroot}%{_datadir}/themes/oxygnome
