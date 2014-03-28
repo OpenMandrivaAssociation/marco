@@ -17,9 +17,9 @@ Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.
 Source1:	http://gnome-look.org/CONTENT/content-files/76582-Oxygen_Accurate_Installation_Files.tar.bz2
 
 BuildRequires:	intltool
-BuildRequires:	itstool
 BuildRequires:	mate-common
 BuildRequires:	mate-dialogs
+BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
