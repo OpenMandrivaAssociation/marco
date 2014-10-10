@@ -7,7 +7,7 @@
 
 Summary:	Mate window manager
 Name:		marco
-Version:	1.8.0
+Version:	1.8.2
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
@@ -70,8 +70,7 @@ tar xf OxygenAccurate.tar.gz
 popd
 
 %build
-%configure2_5x \
-     	--disable-static
+%configure
 
 %make
 
