@@ -1,29 +1,27 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define oname mate-window-manager
-%define major 0
+%define major 1
 %define libname %mklibname marco-private %{major}
 %define devname %mklibname -d marco-private
 
 Summary:	Mate window manager
 Name:		marco
-Version:	1.8.2
-Release:	3
+Version:	1.14.2
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://www.mate-desktop.org/
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-# use oxygen as our default theme
-Source1:	http://gnome-look.org/CONTENT/content-files/76582-Oxygen_Accurate_Installation_Files.tar.bz2
 
 BuildRequires:	intltool
 BuildRequires:	mate-common
-BuildRequires:	mate-dialogs
+BuildRequires:	zenity
 BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libcanberra-gtk)
 BuildRequires:	pkgconfig(libgtop-2.0)
@@ -39,7 +37,7 @@ BuildRequires:	pkgconfig(xfixes)
 BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(xrender)
-Requires:	mate-dialogs
+Requires:	zenity
 %rename	%{oname}
 
 %description
@@ -63,14 +61,10 @@ This package provides the necessary development libraries and include
 files to allow you to develop with Mate window manager.
 
 %prep
-%setup -q -b1
-
-pushd "../Oxygen Accurate Installation Files"
-tar xf OxygenAccurate.tar.gz
-popd
+%setup -q 
 
 %build
-%configure
+%configure --with-gtk=3.0
 
 %make
 
@@ -81,11 +75,6 @@ popd
 
 # remove unneeded converter
 rm -fr %{buildroot}%{_datadir}/MateConf
-
-pushd "../Oxygen Accurate Installation Files/Oxygen Accurate"
-mkdir -p %{buildroot}%{_datadir}/themes/oxygnome
-cp -fr metacity-1 %{buildroot}%{_datadir}/themes/oxygnome/metacity-1
-popd
 
 %files -f marco.lang
 %doc README COPYING NEWS HACKING 

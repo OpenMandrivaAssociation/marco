@@ -1,2 +1,4 @@
+removed_sources:
+  marco-1.8.0.tar.xz: 7083d090aa2966ec590020aaf21ead77417bccba
 sources:
-  "marco-1.8.0.tar.xz": 7083d090aa2966ec590020aaf21ead77417bccba
+  marco-1.14.2.tar.xz: dc4770dea2d09b046f027064329b94e6fd53367b
