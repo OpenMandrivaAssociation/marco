@@ -7,12 +7,12 @@
 
 Summary:	Mate window manager
 Name:		marco
-Version:	1.14.2
+Version:	1.18.1
 Release:	1
-License:	GPLv2+
+License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
-Url:		http://www.mate-desktop.org/
-Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://www.mate-desktop.org/
+Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	intltool
 BuildRequires:	mate-common
@@ -46,6 +46,7 @@ The Mate window manager integrates nicely with MATE.
 %package -n %{libname}
 Summary:	Libraries for Mate window manager
 Group:		System/Libraries
+License:	LGPLv2+
 
 %description -n %{libname}
 This package contains libraries used by Mate window manager.
@@ -53,6 +54,7 @@ This package contains libraries used by Mate window manager.
 %package -n %{devname}
 Summary:	Libraries and include files with Mate window manager
 Group:		Development/C
+License:	LGPLv2+
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
@@ -64,34 +66,35 @@ files to allow you to develop with Mate window manager.
 %setup -q 
 
 %build
-%configure --with-gtk=3.0
-
+#NOCONFIGURE=1 ./autogen.sh
+%configure
 %make
 
 %install
 %makeinstall_std
 
+# locales
 %find_lang %{name} --with-gnome --all-name
 
-# remove unneeded converter
-rm -fr %{buildroot}%{_datadir}/MateConf
-
 %files -f marco.lang
-%doc README COPYING NEWS HACKING 
+%doc README COPYING NEWS HACKING ChangeLog
 %{_bindir}/*
 %{_datadir}/applications/marco.desktop
 %{_datadir}/glib-2.0/schemas/org.mate.marco.gschema.xml
-%{_datadir}/%{name}
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/*
 %{_datadir}/mate/wm-properties/marco-wm.desktop
-%{_datadir}/mate-control-center/keybindings/50-marco-*.xml
+%dir %{_datadir}/%{oname}
+%{_datadir}/%{oname}/keybindings/50-marco-*.xml
 %{_datadir}/themes/*
 %{_mandir}/man1/*
 
 %files -n %{libname}
+%doc COPYING
 %{_libdir}/libmarco-private.so.%{major}*
 
 %files -n %{devname}
-%doc ChangeLog
+%doc COPYING
 %{_libdir}/libmarco-private.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
