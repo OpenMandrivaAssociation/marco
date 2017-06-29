@@ -84,8 +84,7 @@ files to allow you to develop with Mate window manager.
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
 %{_datadir}/mate/wm-properties/marco-wm.desktop
-%dir %{_datadir}/%{oname}
-%{_datadir}/%{oname}/keybindings/50-marco-*.xml
+%{_datadir}/mate-control-center/keybindings/50-marco-*.xml
 %{_datadir}/themes/*
 %{_mandir}/man1/*
 
