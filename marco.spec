@@ -102,7 +102,9 @@ based on %{name}.
 
 %build
 #NOCONFIGURE=1 ./autogen.sh
-%configure
+%configure \
+	--disable-schemas-compile \
+	%{nil}
 %make
 
 %install
