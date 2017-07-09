@@ -14,10 +14,10 @@ Group:		Graphical desktop/Other
 Url:		https://www.mate-desktop.org/
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
+BuildRequires:	itstool
 BuildRequires:	mate-common
-BuildRequires:	zenity
-BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
@@ -37,6 +37,9 @@ BuildRequires:	pkgconfig(xfixes)
 BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(xrender)
+BuildRequires:	zenity
+BuildRequires:	yelp-tools
+
 Requires:	zenity
 %rename	%{oname}
 
@@ -112,4 +115,7 @@ based on %{name}.
 
 # locales
 %find_lang %{name} --with-gnome --all-name
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/marco.desktop
 
