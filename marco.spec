@@ -23,7 +23,7 @@ BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(ice)
-BuildRequires:	pkgconfig(libcanberra-gtk)
+BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(pangoxft)
@@ -41,7 +41,8 @@ BuildRequires:	zenity
 BuildRequires:	yelp-tools
 
 Requires:	zenity
-%rename	%{oname}
+
+%rename		%{oname}
 
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
