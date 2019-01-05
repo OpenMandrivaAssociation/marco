@@ -35,6 +35,7 @@ BuildRequires:	pkgconfig(xdamage)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xfixes)
 BuildRequires:	pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xpresent)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	zenity
@@ -119,4 +120,3 @@ based on %{name}.
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/marco.desktop
-
