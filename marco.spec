@@ -110,10 +110,10 @@ based on %{name}.
 %configure \
 	--disable-schemas-compile \
 	%{nil}
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # locales
 %find_lang %{name} --with-gnome --all-name
