@@ -8,7 +8,7 @@
 Summary:	Mate window manager
 Name:		marco
 Version:	1.20.3
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://www.mate-desktop.org/
