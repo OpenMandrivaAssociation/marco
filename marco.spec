@@ -1,7 +1,7 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define oname mate-window-manager
-%define major 1
+%define major 2
 %define libname %mklibname marco-private %{major}
 %define devname %mklibname -d marco-private
 
