@@ -1,13 +1,13 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define oname mate-window-manager
-%define major 1
+%define major 2
 %define libname %mklibname marco-private %{major}
 %define devname %mklibname -d marco-private
 
 Summary:	Mate window manager
 Name:		marco
-Version:	1.22.1
+Version:	1.22.4
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
