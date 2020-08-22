@@ -39,10 +39,10 @@ BuildRequires:	pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xpresent)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(xrender)
-BuildRequires:	zenity
+BuildRequires:	zenity-gtk
 BuildRequires:	yelp-tools
 
-Requires:	zenity
+Requires:	zenity-gtk
 
 %rename		%{oname}
 
