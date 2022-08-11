@@ -1,0 +1,24 @@
+From d173ab019c6928cfdefa6355ab0aca61f969804f Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Sun, 16 Jan 2022 10:26:02 +0100
+Subject: [PATCH 6/6] theme: fix memory leak
+
+---
+ src/ui/theme.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/ui/theme.c b/src/ui/theme.c
+index bd51673e..c117eeb8 100644
+--- a/src/ui/theme.c
++++ b/src/ui/theme.c
+@@ -6241,7 +6241,6 @@ meta_gtk_widget_get_font_desc (GtkWidget *widget,
+   GtkStyleContext *style = gtk_widget_get_style_context (widget);
+   GtkStateFlags state = gtk_widget_get_state_flags (widget);
+   gtk_style_context_get(style, state, GTK_STYLE_PROPERTY_FONT, &font_desc, NULL);
+-  font_desc = pango_font_description_copy (font_desc);
+ 
+   if (override)
+     pango_font_description_merge (font_desc, override, TRUE);
+-- 
+2.36.1
+

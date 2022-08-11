@@ -8,13 +8,19 @@
 Summary:	Mate window manager
 Name:		marco
 Version:	1.26.0
-Release:	2
+Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://www.mate-desktop.org/
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Patch1:		marco_0001-Safeguard-against-calling-gdk_x11_window_get_xid-wit.patch
+Patch2:		marco_0002-fix-code-formatting-issue-of-previous-commit.patch
+Patch3:		marco_0003-prefs-fix-memory-leak.patch
+Patch4:		marco_0004-build-fix-meson-build.patch
+Patch5:		marco_0005-compositor-xrender-fix-memory-leak.patch
+Patch6:		marco_0006-theme-fix-memory-leak.patch
 
-BuildRequires:  autoconf-archive
+BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
 BuildRequires:	itstool
@@ -36,7 +42,7 @@ BuildRequires:	pkgconfig(xdamage)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xfixes)
 BuildRequires:	pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xpresent)
+BuildRequires:	pkgconfig(xpresent)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	zenity-gtk
@@ -66,7 +72,7 @@ Marco is a simple window manager that integrates nicely with MATE.
 %{_datadir}/mate/wm-properties/marco-wm.desktop
 %{_datadir}/mate-control-center/keybindings/50-marco-*.xml
 %{_datadir}/themes/*
-%{_mandir}/man1/*
+%doc %{_mandir}/man1/*
 
 #---------------------------------------------------------------------------
 
@@ -104,13 +110,16 @@ based on %{name}.
 #---------------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 #NOCONFIGURE=1 ./autogen.sh
 %configure \
-	--disable-schemas-compile \
-	%{nil}
+	--disable-schemas-compile
+
+# fix rpmlint unused-direct-shlib-dependency warning
+sed -i -e 's! -shared ! -Wl,--as-needed\0!g' libtool
+
 %make_build
 
 %install
