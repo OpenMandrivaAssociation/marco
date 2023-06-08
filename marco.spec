@@ -7,18 +7,12 @@
 
 Summary:	Mate window manager
 Name:		marco
-Version:	1.26.0
-Release:	3
+Version:	1.26.2
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://www.mate-desktop.org/
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-Patch1:		marco_0001-Safeguard-against-calling-gdk_x11_window_get_xid-wit.patch
-Patch2:		marco_0002-fix-code-formatting-issue-of-previous-commit.patch
-Patch3:		marco_0003-prefs-fix-memory-leak.patch
-Patch4:		marco_0004-build-fix-meson-build.patch
-Patch5:		marco_0005-compositor-xrender-fix-memory-leak.patch
-Patch6:		marco_0006-theme-fix-memory-leak.patch
 
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
@@ -45,6 +39,7 @@ BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xpresent)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(xrender)
+BuildRequires:	pkgconfig(xres)
 BuildRequires:	zenity-gtk
 BuildRequires:	yelp-tools
 
