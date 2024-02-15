@@ -1,18 +1,19 @@
-%define url_ver	%(echo %{version}|cut -d. -f1,2)
+%define mate_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define oname mate-window-manager
 %define major 2
-%define libname %mklibname marco-private %{major}
-%define devname %mklibname -d marco-private
+%define libname %mklibname marco-private
+%define devname %mklibname marco-private -d
+%define oldlibname %mklibname marco-private 2
 
 Summary:	Mate window manager
 Name:		marco
-Version:	1.26.2
+Version:	1.28.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://www.mate-desktop.org/
-Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
@@ -75,6 +76,7 @@ Marco is a simple window manager that integrates nicely with MATE.
 Summary:	Libraries for Mate window manager
 Group:		System/Libraries
 License:	LGPLv2+
+Obsoletes:	%{oldlibname} < %{EVRD}
 
 %description -n %{libname}
 This package contains libraries used by %{name}.
