@@ -127,3 +127,4 @@ sed -i -e 's! -shared ! -Wl,--as-needed\0!g' libtool
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/marco.desktop
+
