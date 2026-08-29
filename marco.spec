@@ -17,11 +17,7 @@ Url:		https://www.mate-desktop.org/
 # Use for now tarball from GitHub because from few months sources at mate-desktop.org was not updated.
 Source0:	https://github.com/mate-desktop/marco/releases/download/v%{version}/marco-%{version}.tar.xz
 
-BuildRequires:	automake
-BuildRequires:	libtool-base
-BuildRequires:	slibtool
-BuildRequires:	make
-BuildRequires:	autoconf-archive
+BuildRequires:	meson
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
 BuildRequires:	itstool
@@ -119,17 +115,18 @@ based on %{name}.
 %autosetup -p1
 
 %build
-#NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-schemas-compile
+%meson	\
+		-Dstartup-notification=true \
+		-Dcompositor=true \
+		-Dxsync=true \
+		-Drender=true \
+		-Dshape=true \
+		-Dxinerama=true
 
-# fix rpmlint unused-direct-shlib-dependency warning
-sed -i -e 's! -shared ! -Wl,--as-needed\0!g' libtool
-
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 # locales
 %find_lang %{name} --with-gnome --all-name
